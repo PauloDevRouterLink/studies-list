@@ -11,11 +11,15 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: main.$zinc_800;
+  font-family: main.$font_poppins;
+  background: main.$zinc_700;
   color: main.$zinc_300;
 }
 
 button {
   cursor: pointer;
+}
+
+:root {
+  font-size: 65%;
 }

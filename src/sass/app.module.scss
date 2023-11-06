@@ -1,0 +1,32 @@
+@use './main.scss';
+
+.main__container {
+   display: grid;
+   grid-template-columns: min-content min-content auto;
+   grid-template-areas: 
+      'new-task'
+      'stopwatch'
+      'tasks'
+   ;
+   row-gap: 1.5rem;
+   min-width: 320px;
+   min-height: calc(100vh - 32px);
+   width: 100%;
+   padding: 3.2rem;
+   border-radius: 1rem;
+   background-color: main.$zinc_800;
+
+   @media screen and (min-width: 1280px) {
+      grid-template-areas: 
+         'new-task tasks'
+         'stopwatch tasks'
+      ;
+
+      column-gap: 6.4rem;
+      grid-template-rows: min-content min-content;
+      grid-template-columns: 750px 300px;
+      justify-content: center;
+      align-content: center;
+      padding: 6.4rem;
+   }
+}

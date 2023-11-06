@@ -1,28 +1,30 @@
 @use '../../sass/main.scss';
 
 .btn {
-   border-radius: 2rem;
-   border: 2px solid main.$violet_600;
-   width: 10rem;
-   height: 2rem;
+  border-radius: 2rem;
+  border: 2px solid main.$violet_700;
+  width: 10rem;
+  height: 3rem;
 
-   font-size: 0.875rem;
-   font-weight: 600;
-   color: main.$violet_800;
-   background-color: main.$violet_200;
+  font-size: 1.575rem;
+  font-weight: 600;
 
-   transition: all .3s ease-in-out;
+  color: main.$violet_800;
+  background-color: main.$violet_200;
 
+  transition: all .3s ease-in-out;
 
-   &:hover {
-     width: 11rem; 
-     background: main.$violet_900;
-     color: main.$zinc_300;
-   }
+  box-shadow: 2px 2px 4px main.$gray_shadow_100;
 
-   &:active {
-     background: main.$violet_950;
-     color: main.$zinc_300;
-   }
- 
+  &:hover {
+    width: 11rem; 
+    background: main.$violet_700;
+    color: main.$zinc_300;
+  }
+
+  &:active {
+    background: main.$violet_950;
+    color: main.$zinc_300;
+    box-shadow: 2px 2px 4px main.$gray_shadow_100 inset;
+  }
 }

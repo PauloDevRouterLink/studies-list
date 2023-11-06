@@ -1,6 +1,8 @@
 import { Form } from './components/Form'
 import { List } from './components/List'
 
+import styles from './sass/app.module.scss'
+
 export const App = () => {
 	const tasks = [
 		{
@@ -22,7 +24,7 @@ export const App = () => {
 	]
 
 	return (
-		<main>
+		<main className={styles.main__container}>
 			<Form />
 
 			<List.Root title="Estudos do dia">

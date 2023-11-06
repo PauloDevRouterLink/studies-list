@@ -1,0 +1,21 @@
+@use './main.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: main.$zinc_800;
+  color: main.$zinc_300;
+}
+
+button {
+  cursor: pointer;
+}

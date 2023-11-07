@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Button } from '../Button'
+import { ButtonAdd } from '../Button'
 
 import styles from './styles.module.scss'
 
@@ -29,7 +29,7 @@ export class Form extends Component {
 						required
 					/>
 				</div>
-				<Button text="Adicionar" />
+				<ButtonAdd label="Adicionar" />
 			</form>
 		)
 	}

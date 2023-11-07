@@ -1,14 +1,15 @@
 @use '../../sass/main.scss';
 
 .form__new_task {
+	grid-area: 'new-task';
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	grid-area: 'new-task';
+
 	background: main.$gray_800;
 	border-radius: 1rem;
-	box-shadow: 2px 4px 4px main.$gray_shadow_100;
 	padding: 1.2rem;
 
 	&__container {
@@ -25,10 +26,12 @@
 		input {
 			width: 100%;
 			padding: 0.8rem 0.765rem;
-			border: unset;
+			border: 0.2rem solid transparent;
 			border-radius: 0.5rem;
-			background: main.$zinc_500;
-			box-shadow: 0px 2px 4px main.$gray_shadow_100;
+			background: main.$zinc_600;
+			color: main.$violet_300;
+
+			font-size: 1.75rem;
 			outline: none;
 
 			transition: all 0.2s ease-in-out;
@@ -50,6 +53,7 @@
 			justify-content: space-around;
 			font-size: 2.25rem;
 			padding: 1.155rem;
+			
 
 			&__container {
 				width: calc(60% - 12px);

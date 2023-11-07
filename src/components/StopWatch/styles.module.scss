@@ -1,0 +1,67 @@
+@use '../../sass/main.scss';
+
+.stopwatch {
+  grid-area: 'stopwatch';
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 2.25rem;
+  }
+
+
+  &__clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+
+    background-color: main.$gray_800;
+    border-radius: 1rem;
+    font-size: 5rem;
+    margin-bottom: 2.5rem;
+    padding-block: 1.6rem;
+    width: 100%;
+
+    .clock__number {
+      background-color: main.$gray_700;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 3.6rem;
+      width: 3rem;
+      border-radius: 1rem;
+    
+      @media screen and (min-width: 1280px){
+        height: 10.8rem;
+        width: 9rem;
+      }
+    }
+    
+    .clock__division {
+      height: 4.2rem;
+
+      display: flex;
+      align-items: center;
+    
+      @media screen and (min-width: 1280px){
+        height: 12.5rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    &__clock {
+      font-size: 10rem;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+

@@ -2,29 +2,30 @@
 
 .btn {
 	border-radius: 2rem;
-	border: 2px solid main.$violet_700;
+	border: 2px solid transparent;
 	width: 10rem;
 	height: 3rem;
 
 	font-size: 1.575rem;
 	font-weight: 600;
 
-	color: main.$violet_800;
-	background-color: main.$gray_300;
+	color: main.$zinc_200;
+	background-color: main.$violet_700;
 
 	transition: all 0.3s ease-in-out;
 
-	box-shadow: 2px 2px 4px main.$gray_shadow_100;
 
 	&:hover {
 		width: 11rem;
-		background: main.$violet_700;
-		color: main.$zinc_300;
+
+		filter: brightness(125%);
+		border: 2px solid main.$violet_800;
+		background-color: main.$violet_950;
+		color: main.$violet_800;
 	}
 
 	&:active {
 		background: main.$violet_950;
 		color: main.$zinc_300;
-		box-shadow: 2px 2px 4px main.$gray_shadow_100 inset;
 	}
 }

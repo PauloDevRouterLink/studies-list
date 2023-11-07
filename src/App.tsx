@@ -1,7 +1,7 @@
 import { Form } from './components/Form'
 import { List } from './components/List'
 
-import styles from './sass/app.module.scss'
+import styles from './sass/App.module.scss'
 
 export const App = () => {
 	const tasks = [

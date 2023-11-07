@@ -2,8 +2,9 @@ import { Component } from 'react'
 
 import styles from './styles.module.scss'
 
-export class Button extends Component {
+type ButtonProps = { text: string }
+export class Button extends Component<ButtonProps> {
 	render() {
-		return <button className={styles.btn}>Hello</button>
+		return <button className={styles.btn}>{this.props.text}</button>
 	}
 }

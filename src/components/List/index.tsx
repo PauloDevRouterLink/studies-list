@@ -1,7 +1,7 @@
-import { ListWrapper } from './ListWrapper'
+import { ListAside } from './ListAside'
 import { ListItem } from './ListItem'
 
 export const List = {
-	Root: ListWrapper,
+	Root: ListAside,
 	Item: ListItem,
 }

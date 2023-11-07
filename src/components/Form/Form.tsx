@@ -9,7 +9,13 @@ export class Form extends Component {
 			<form className={styles.form__new_task}>
 				<div className={styles.form__new_task__container}>
 					<label htmlFor="task">Adicione um novo estudo</label>
-					<input type="text" name="task" id="task" placeholder="Digite uma tarefa" required />
+					<input
+						type="text"
+						name="task"
+						id="task"
+						placeholder="Digite uma tarefa"
+						required
+					/>
 				</div>
 				<div className={styles.form__new_task__container}>
 					<label htmlFor="time">Tempo</label>
@@ -23,7 +29,7 @@ export class Form extends Component {
 						required
 					/>
 				</div>
-				<Button />
+				<Button text="Adicionar" />
 			</form>
 		)
 	}

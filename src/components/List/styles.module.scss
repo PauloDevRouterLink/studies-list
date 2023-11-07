@@ -1,5 +1,80 @@
-@use '../../sass/colors';
+@use '../../sass/main.scss';
 
-.list__title {
-   font-size: 1.4rem;
+.task__list {
+	grid-area: 'tasks';
+	height: 100%;
+
+	h2 {
+		font-size: 1.25rem;
+		font-weight: semibold;
+		letter-spacing: 0.1rem;
+		margin-bottom: 1.5rem;
+		color: main.$violet_600;
+	}
+
+	ul {
+		max-width: 350px;
+		overflow-y: scroll;
+		scrollbar-width: thin;
+	}
+
+	@media screen and (min-width: 1280px) {
+		h2 {
+			text-align: center;
+			font-size: 2.25rem;
+			margin-bottom: 2.4rem;
+		}
+
+		ul {
+			overflow: auto;
+			max-height: 500px;
+		}
+	}
+
+	&_item {
+		background-color: main.$zinc_700;
+		border-radius: 0.8rem;
+		box-shadow: 2px 4px 4px main.$gray_shadow_100;
+		padding: 1.2rem;
+		margin-bottom: 0.8rem;
+		position: relative;
+		cursor: pointer;
+
+		h3 {
+			margin-bottom: 0.8rem;
+			word-break: break-all;
+			color: main.$violet_400;
+		}
+
+		span {
+			color: main.$zinc_300;
+		}
+
+		@media screen and (min-width: 1280px) {
+			font-size: 1.8rem;
+		}
+	}
+
+	.item__selected {
+		background-color: main.$emerald_400;
+		box-shadow: 2px 4px 4px main.$gray_shadow_100 inset;
+	}
+
+	.item__completed {
+		background-color: main.$emerald_600;
+		cursor: auto;
+
+		.concluded {
+			display: block;
+			background-image: url('../../assets/check-mark.svg');
+			background-repeat: no-repeat;
+			background-size: 38px 38px;
+			position: absolute;
+			top: 50%;
+			right: 12px;
+			transform: translateY(-50%);
+			width: 42px;
+			height: 43px;
+		}
+	}
 }

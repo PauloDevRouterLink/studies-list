@@ -1,35 +1,69 @@
-import { Component } from 'react'
+import { FormEvent, Component, Dispatch, SetStateAction } from 'react'
 import { ButtonAdd } from '../Button'
+import { FormInputField } from './FormInputField'
+import { TaskProps } from '../../@types/TasksProps'
 
 import styles from './styles.module.scss'
 
-export class Form extends Component {
+type FormProps = {
+	tasks: TaskProps[]
+	setTasks: Dispatch<SetStateAction<TaskProps[]>>
+}
+
+export default class Form extends Component<FormProps> {
+	state = {
+		task: '',
+		time: '00:00',
+	}
+
+	addTask(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault()
+		this.props.setTasks([...this.props.tasks, { ...this.state }])
+		this.setState({ task: '', time: '00:00' })
+	}
+
 	render() {
+		console.log('Tasks', this.state.task)
+		console.log('Time', this.state.time)
+
 		return (
-			<form className={styles.form__new_task}>
+			<form
+				className={styles.form__new_task}
+				onSubmit={this.addTask.bind(this)}
+			>
 				<div className={styles.form__new_task__container}>
 					<label htmlFor="task">Adicione um novo estudo</label>
-					<input
+					<FormInputField
 						type="text"
 						name="task"
 						id="task"
 						placeholder="Digite uma tarefa"
+						onChange={event =>
+							this.setState({ ...this.state, task: event.target.value })
+						}
+						value={this.state.task}
 						required
 					/>
 				</div>
 				<div className={styles.form__new_task__container}>
 					<label htmlFor="time">Tempo</label>
-					<input
+					<FormInputField
 						type="time"
 						step="1"
 						id="time"
 						name="time"
-						max="01:30:00"
+						max="23:59:59"
 						min="0:00:00"
+						onChange={event =>
+							this.setState({ ...this.state, time: event.target.value })
+						}
+						value={this.state.time}
 						required
 					/>
 				</div>
-				<ButtonAdd label="Adicionar" />
+				<div className={styles.form__new_task__button}>
+					<ButtonAdd type="submit" label="Adicionar" />
+				</div>
 			</form>
 		)
 	}

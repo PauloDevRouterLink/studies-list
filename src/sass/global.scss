@@ -1,38 +1,38 @@
 @use './main.scss';
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: main.$violet_100;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: main.$zinc_700;
-    border-radius: 1rem;
-  }
+	::-webkit-scrollbar {
+		width: 1rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: main.$zinc_800;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: main.$violet_500;
+		border-radius: 1rem;
+	}
 }
 
 body {
-  font-family: main.$font_poppins;
-  background: main.$zinc_700;
-  color: main.$zinc_300;
+	font-family: main.$font_poppins;
+	background: main.$zinc_700;
+	color: main.$zinc_300;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 :root {
-  font-size: 65%;
+	font-size: 65%;
 }

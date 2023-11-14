@@ -1,13 +1,9 @@
 import { FC } from 'react'
+import { TaskProps } from '../../@types/TasksProps'
 
 import styles from './styles.module.scss'
 
-type ListItemProps = {
-	task: string
-	time: string
-}
-
-type ListItemType = { item: ListItemProps }
+type ListItemType = { item: TaskProps }
 
 export const ListItem: FC<ListItemType> = ({ item }) => {
 	const { task, time } = item

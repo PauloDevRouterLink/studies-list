@@ -1,4 +1,5 @@
 import { FormEvent, ChangeEvent, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { ButtonAdd } from './components/Button'
 import { List } from './components/List'
 import { StopWatch } from './components/StopWatch'
@@ -11,13 +12,31 @@ import styles from './sass/App.module.scss'
 export const App = () => {
 	const [task, setTask] = useState<TaskProps>({} as TaskProps)
 	const [tasks, setTasks] = useState<TaskProps[] | []>([])
+	const [selected, setSelected] = useState<TaskProps>()
+
+	console.log(selected)
+
+	const handleSelectedTask = (taskSelected: TaskProps) => {
+		setSelected(taskSelected)
+	}
 
 	const handleCreatedTask = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		setTasks([...tasks, { task: task.task, time: task.time }])
+		const infoCreatedTask = {
+			id: uuidv4(),
+			task: task.task,
+			time: task.time,
+			completed: false,
+			selected: false,
+		}
+
+		setTasks([...tasks, infoCreatedTask])
 		setTask({
+			id: infoCreatedTask.id,
 			task: '',
 			time: '00:00',
+			selected: infoCreatedTask.selected,
+			completed: infoCreatedTask.completed,
 		})
 	}
 
@@ -62,8 +81,12 @@ export const App = () => {
 			</Form.Root>
 
 			<List.Root title="Estudos do dia">
-				{tasks.map((task, index) => (
-					<List.Item key={index} item={task} />
+				{tasks.map(task => (
+					<List.Item
+						key={task.id}
+						item={task}
+						taskSelectedAction={handleSelectedTask}
+					/>
 				))}
 			</List.Root>
 

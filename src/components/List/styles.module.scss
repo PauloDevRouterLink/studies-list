@@ -48,6 +48,8 @@
 			background: main.$violet_300;
 			box-shadow: 2px 4px 4px main.$zinc_900;
 
+			transform: translateY(2px);
+
 			h3,
 			span {
 				color: main.$violet_700;
@@ -55,6 +57,7 @@
 		}
 
 		h3 {
+			text-transform: capitalize;
 			margin-bottom: 0.8rem;
 			word-break: break-all;
 			color: main.$violet_400;

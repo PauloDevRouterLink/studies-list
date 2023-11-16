@@ -1,4 +1,5 @@
 import { FormEvent, Component, Dispatch, SetStateAction } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { ButtonAdd } from '../Button'
 import { FormInputField } from './FormInputField'
 import { TaskProps } from '../../@types/TasksProps'
@@ -18,7 +19,15 @@ export default class Form extends Component<FormProps> {
 
 	addTask(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-		this.props.setTasks([...this.props.tasks, { ...this.state }])
+		this.props.setTasks([
+			...this.props.tasks,
+			{
+				...this.state,
+				selected: false,
+				completed: false,
+				id: uuidv4(),
+			},
+		])
 		this.setState({ task: '', time: '00:00' })
 	}
 

@@ -1,6 +1,6 @@
 import { FormEvent, Component, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { ButtonAdd } from '../Button'
+import { Button } from '../Button'
 import { FormInputField } from './FormInputField'
 import { TaskProps } from '../../@types/TasksProps'
 
@@ -10,6 +10,10 @@ type FormProps = {
 	tasks: TaskProps[]
 	setTasks: Dispatch<SetStateAction<TaskProps[]>>
 }
+
+/**
+ * FEAT: FORMA ANTIGO DE CRIA COMPONENT USANDO CLASS
+ */
 
 export default class Form extends Component<FormProps> {
 	state = {
@@ -71,7 +75,7 @@ export default class Form extends Component<FormProps> {
 					/>
 				</div>
 				<div className={styles.form__new_task__button}>
-					<ButtonAdd type="submit" label="Adicionar" />
+					<Button type="submit" label="Adicionar" />
 				</div>
 			</form>
 		)

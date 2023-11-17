@@ -73,13 +73,26 @@
 	}
 
 	.item__selected {
-		background-color: main.$emerald_400;
+		background-color: main.$zinc_400;
+		filter: brightness(132%);
 		box-shadow: 2px 4px 4px main.$gray_shadow_100 inset;
+
+		h3,
+		span {
+			color: main.$violet_900;
+		}
 	}
 
 	.item__completed {
 		background-color: main.$emerald_600;
 		cursor: auto;
+
+		h3,
+		span {
+			color: main.$emerald_950;
+			text-decoration: line-through;
+			font-weight: 600;
+		}
 
 		.concluded {
 			display: block;

@@ -1,5 +1,6 @@
 import { FormEvent, Component, Dispatch, SetStateAction } from 'react'
-import { ButtonAdd } from '../Button'
+import { v4 as uuidv4 } from 'uuid'
+import { Button } from '../Button'
 import { FormInputField } from './FormInputField'
 import { TaskProps } from '../../@types/TasksProps'
 
@@ -10,6 +11,10 @@ type FormProps = {
 	setTasks: Dispatch<SetStateAction<TaskProps[]>>
 }
 
+/**
+ * FEAT: FORMA ANTIGO DE CRIA COMPONENT USANDO CLASS
+ */
+
 export default class Form extends Component<FormProps> {
 	state = {
 		task: '',
@@ -18,7 +23,15 @@ export default class Form extends Component<FormProps> {
 
 	addTask(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-		this.props.setTasks([...this.props.tasks, { ...this.state }])
+		this.props.setTasks([
+			...this.props.tasks,
+			{
+				...this.state,
+				selected: false,
+				completed: false,
+				id: uuidv4(),
+			},
+		])
 		this.setState({ task: '', time: '00:00' })
 	}
 
@@ -62,7 +75,7 @@ export default class Form extends Component<FormProps> {
 					/>
 				</div>
 				<div className={styles.form__new_task__button}>
-					<ButtonAdd type="submit" label="Adicionar" />
+					<Button type="submit" label="Adicionar" />
 				</div>
 			</form>
 		)

@@ -1,40 +1,59 @@
 import { FormEvent, ChangeEvent, useState } from 'react'
-import { ButtonAdd } from './components/Button'
+import { v4 as uuidv4 } from 'uuid'
+import { Button } from './components/Button'
 import { List } from './components/List'
 import { StopWatch } from './components/StopWatch'
 import { Form } from './components/Form'
 import { TaskProps } from './@types/TasksProps'
-// import FormHero from './components/Form/Form'
+import { createdTask } from './functions/created-task'
 
 import styles from './sass/App.module.scss'
+import { finishedTask } from './functions/finished-task'
 
 export const App = () => {
-	const [task, setTask] = useState<TaskProps>({} as TaskProps)
+	const [inputTask, setInputTask] = useState<TaskProps>({
+		id: uuidv4(),
+		task: '',
+		time: '00:00',
+		selected: false,
+		completed: false,
+	} as TaskProps)
 	const [tasks, setTasks] = useState<TaskProps[] | []>([])
+	const [selected, setSelected] = useState<TaskProps | undefined>(
+		{} as TaskProps,
+	)
 
 	const handleCreatedTask = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		setTasks([...tasks, { task: task.task, time: task.time }])
-		setTask({
-			task: '',
-			time: '00:00',
-		})
+		createdTask({ tasks, setTasks, inputTask, setInputTask })
+	}
+
+	const handleFinishedTask = () => {
+		if (selected) {
+			finishedTask({ selected, setSelected, setTasks })
+		}
+	}
+
+	const handleSelectedTask = (taskSelected: TaskProps) => {
+		setSelected(taskSelected)
+		setTasks(taskPrevious =>
+			taskPrevious.map(task => ({
+				...task,
+				selected: task.id === taskSelected.id ? true : false,
+			})),
+		)
 	}
 
 	const handleInputChanged = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target
-		setTask({
-			...task,
+		setInputTask({
+			...inputTask,
 			[name]: value,
 		})
-
-		console.log(task)
 	}
 
 	return (
 		<main className={styles.app__container}>
-			{/* <FormHero tasks={tasks} setTasks={setTasks} /> */}
-
 			<Form.Root onSubmit={handleCreatedTask}>
 				<Form.Label htmlFor="task" label="Adicionar nova tarefa">
 					<Form.Input
@@ -42,7 +61,7 @@ export const App = () => {
 						type="text"
 						name="task"
 						placeholder="Digite uma nova tarefa"
-						value={task.task}
+						value={inputTask.task}
 						onChange={handleInputChanged}
 					/>
 				</Form.Label>
@@ -52,22 +71,26 @@ export const App = () => {
 						type="time"
 						name="time"
 						step={1}
-						max="07:30:00"
+						max="23:59:59"
 						min="0:00:00"
-						value={task.time}
+						value={inputTask.time}
 						onChange={handleInputChanged}
 					/>
 				</Form.Label>
-				<ButtonAdd type="submit" label="Adicionar" />
+				<Button type="submit" label="Adicionar" />
 			</Form.Root>
 
 			<List.Root title="Estudos do dia">
-				{tasks.map((task, index) => (
-					<List.Item key={index} item={task} />
+				{tasks.map(task => (
+					<List.Item
+						key={task.id}
+						item={task}
+						taskSelectedAction={handleSelectedTask}
+					/>
 				))}
 			</List.Root>
 
-			<StopWatch />
+			<StopWatch select={selected!} finishTask={handleFinishedTask} />
 		</main>
 	)
 }
